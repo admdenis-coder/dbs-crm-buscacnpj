@@ -1,0 +1,8 @@
+*
+!dbs_crm/
+!dbs_crm/**
+!web/
+!web/**
+!Dockerfile
+**/__pycache__/
+**/*.pyc

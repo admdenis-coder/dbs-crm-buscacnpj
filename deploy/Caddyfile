@@ -1,0 +1,17 @@
+{$CRM_DOMAIN} {
+    basic_auth {
+        {$CRM_USERNAME} {$CRM_PASSWORD_HASH}
+    }
+    header {
+        Strict-Transport-Security "max-age=31536000"
+        Referrer-Policy "same-origin"
+        -Server
+    }
+    request_body {
+        max_size 16KB
+    }
+    reverse_proxy crm:8765 {
+        header_up X-DBS-Gateway {$DBS_GATEWAY_TOKEN}
+        header_up -Authorization
+    }
+}
